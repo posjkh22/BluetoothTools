@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView1"
+        android:scaleType="fitCenter"
+        android:layout_marginHorizontal="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/border"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="READ"
+                android:id="@+id/property"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_uuid_label"
+                android:textSize="14dp"
+                android:text="UUID:"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/uuid"
+                android:textSize="12dp"
+                android:text="0000A00A-0000-1000-8000-00805F9B34FB"
+                android:textColor="#000000"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="SEND"
+                android:padding="0dp" />
+
+            <EditText
+                android:id="@+id/et_send"
+                android:layout_width="260dp"
+                android:layout_height="40dp">
+            </EditText>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_read"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="READ"
+            android:padding="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_read"
+            android:layout_width="260dp"
+            android:text="&lt;Read>"
+            android:layout_height="40dp">
+        </TextView>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_notify"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="NOTITY"
+                android:padding="0dp"/>
+
+            <TextView
+                android:id="@+id/tv_notify"
+                android:layout_width="260dp"
+                android:text="disable"
+                android:layout_height="40dp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_indicate"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="INDICATE"
+                android:padding="0dp"/>
+
+            <TextView
+                android:id="@+id/tv_indicate"
+                android:layout_width="260dp"
+                android:text="disable"
+                android:layout_height="40dp">
+            </TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
