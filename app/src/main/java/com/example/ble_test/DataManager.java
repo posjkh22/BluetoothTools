@@ -3,16 +3,11 @@ package com.example.ble_test;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
-import android.util.Log;
-
 import androidx.core.content.ContextCompat;
-
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import static com.example.ble_test.Constants.filtered_rssi_log_fileName;
 import static com.example.ble_test.Constants.raw_rssi_log_fileName;

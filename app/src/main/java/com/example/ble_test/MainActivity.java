@@ -19,7 +19,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.ParcelUuid;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -30,7 +29,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -47,15 +45,14 @@ import static android.bluetooth.BluetoothGattCharacteristic.PROPERTY_READ;
 import static android.bluetooth.BluetoothGattCharacteristic.PROPERTY_SIGNED_WRITE;
 import static android.bluetooth.BluetoothGattCharacteristic.PROPERTY_WRITE;
 import static android.bluetooth.BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE;
-import static android.bluetooth.BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT;
 import static com.example.ble_test.Constants.CCCD_HM_10;
-import static com.example.ble_test.Constants.MAC_ADDR;
 import static com.example.ble_test.Constants.REQUEST_ENABLE_BT;
 import static com.example.ble_test.Constants.REQUEST_FINE_LOCATION;
 import static com.example.ble_test.Constants.SCAN_PERIOD;
 import static com.example.ble_test.Constants.TAG;
 import static com.example.ble_test.Constants.filtered_rssi_log_fileName;
 import static com.example.ble_test.Constants.raw_rssi_log_fileName;
+import static com.example.ble_test.Constants.scan_time_milisecond;
 import static com.example.ble_test.ListViewBtnAdapter.BTN_INDEX_MAX;
 import static com.example.ble_test.ListViewBtnAdapter.BTN_INDICATE_INDEX;
 import static com.example.ble_test.ListViewBtnAdapter.BTN_NOTIFY_INDEX;
@@ -76,6 +73,8 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
 
     DataManager dataManager;
 
+    // button for start scan
+    private Button btn_config_;
     // button for start scan
     private Button btn_scan_, btn_watch_;
     // button for start connect
@@ -200,6 +199,7 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
 
 
         //// get instances of gui objects
+        btn_config_ = findViewById(R.id.btn_config);
         // status textview
         tv_status_= findViewById( R.id.tv_status );
         // device info
@@ -256,6 +256,8 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
 
         btn_connect_.setOnClickListener( (v) -> { StartConnect(v); });
 
+        btn_config_.setOnClickListener( (v) -> { StartConfigurations(v); });
+
         //btn_send_.setOnClickListener( (v) -> { sendData(v); });
 
         //btn_read_.setOnClickListener( (v) -> { readData(v); });
@@ -270,6 +272,11 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
             Log.d( TAG, "FEATURE_BLUETOOTH_LE is supported." );
             finish();
         }
+    }
+
+    private void StartConfigurations( View v ) {
+        Intent intent = new Intent(this, ConfigActivity.class);
+        startActivity(intent);
     }
 
     /*
@@ -433,11 +440,15 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    int count = 0;
                     while(true){
                         try {
                             boolean rssiStatus = _gatt.readRemoteRssi();
                             //Log.d(TAG, "GattClientCallback readRemoteRssi");
                             Thread.sleep(500);
+                            if (scan_time_milisecond * (1000 / 500) == count++) {
+                                break;
+                            }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

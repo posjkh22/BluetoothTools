@@ -1,14 +1,30 @@
 package com.example.ble_test;
 
 public class KalmanFilter {
-    private double Q = 0.00001;
-    private double R = 0.001;
-    private double P = 1;
-    private double X = 0;
-    private double K;
+    private static double Q = 0.00001;
+    private static double R = 0.001;
+    private static double P = 1;
+    private static double X = 0;
+    private static double K;
+
+    public static void setQvalue(double q_value) {
+        Q = q_value;
+    }
+
+    public static double getQvalue() {
+        return Q;
+    }
+
+    public static void setRvalue(double r_value) {
+        R = r_value;
+    }
+
+    public static double getRvalue() {
+        return R;
+    }
 
     // 첫번째값을 입력받아 초기화 한다. 예전값들을 계산해서 현재값에 적용해야 하므로 반드시 하나이상의 값이 필요하므로~
-    KalmanFilter(double initValue) {
+    public KalmanFilter(double initValue) {
         X = initValue;
     }
 

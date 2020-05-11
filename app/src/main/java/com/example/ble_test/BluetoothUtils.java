@@ -11,10 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.example.ble_test.Constants.MAC_ADDR;
-import static com.example.ble_test.Constants.REQUEST_ENABLE_BT;
-import static com.example.ble_test.Constants.REQUEST_FINE_LOCATION;
-import static com.example.ble_test.Constants.SCAN_PERIOD;
 import static com.example.ble_test.Constants.TAG;
 import static com.example.ble_test.Constants.CHARACTERISTIC_COMMAND_STRING;
 import static com.example.ble_test.Constants.CHARACTERISTIC_RESPONSE_STRING;

@@ -10,6 +10,8 @@ public class Constants {
     // used to request fine location permission
     public static int REQUEST_FINE_LOCATION= 2;
 
+    public static int scan_time_milisecond = 60 * 10;
+
     /// CCCD
     public static String CCCD_HM_10 = "00002902-0000-1000-8000-00805F9B34FB";   // HM-10
 

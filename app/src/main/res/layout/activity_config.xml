@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConfigActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_config_kalman_q_value"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="Q Value"/>
+
+            <EditText
+                android:id="@+id/et_config_kalman_q_value"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:maxLines="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_config_kalman_q_value"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="value" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_config_kalman_r_value"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="R Value"/>
+
+            <EditText
+                android:id="@+id/et_config_kalman_r_value"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:maxLines="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_config_kalman_r_value"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="value" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_config_scan_time"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="Scan time"/>
+
+            <EditText
+                android:id="@+id/et_config_scan_time"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:maxLines="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_config_scan_time"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="value" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
