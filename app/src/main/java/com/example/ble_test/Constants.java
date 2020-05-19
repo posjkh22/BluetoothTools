@@ -12,6 +12,8 @@ public class Constants {
 
     public static int scan_time_milisecond = 60 * 10;
 
+    public static boolean isMacAddressFilterEnabled = false;
+
     /// CCCD
     public static String CCCD_HM_10 = "00002902-0000-1000-8000-00805F9B34FB";   // HM-10
 
@@ -32,6 +34,9 @@ public class Constants {
     // focus MAC address
     //public final static String MAC_ADDR= "78:A5:04:58:A7:92";
     public final static String MAC_ADDR= "90:E2:02:92:95:21";
+
+    public final static String MAC_ADDR_BLE_COMBO= "94:44:44:20:02:16";
+
     // scan period
     public static final long SCAN_PERIOD = 5000;
 

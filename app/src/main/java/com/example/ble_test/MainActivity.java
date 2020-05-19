@@ -46,11 +46,13 @@ import static android.bluetooth.BluetoothGattCharacteristic.PROPERTY_SIGNED_WRIT
 import static android.bluetooth.BluetoothGattCharacteristic.PROPERTY_WRITE;
 import static android.bluetooth.BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE;
 import static com.example.ble_test.Constants.CCCD_HM_10;
+import static com.example.ble_test.Constants.MAC_ADDR_BLE_COMBO;
 import static com.example.ble_test.Constants.REQUEST_ENABLE_BT;
 import static com.example.ble_test.Constants.REQUEST_FINE_LOCATION;
 import static com.example.ble_test.Constants.SCAN_PERIOD;
 import static com.example.ble_test.Constants.TAG;
 import static com.example.ble_test.Constants.filtered_rssi_log_fileName;
+import static com.example.ble_test.Constants.isMacAddressFilterEnabled;
 import static com.example.ble_test.Constants.raw_rssi_log_fileName;
 import static com.example.ble_test.Constants.scan_time_milisecond;
 import static com.example.ble_test.ListViewBtnAdapter.BTN_INDEX_MAX;
@@ -447,6 +449,7 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
                             //Log.d(TAG, "GattClientCallback readRemoteRssi");
                             Thread.sleep(500);
                             if (scan_time_milisecond * (1000 / 500) == count++) {
+                                tv_status_.setText( "Connected (Reading RSSI is done)" );
                                 break;
                             }
                         } catch (InterruptedException e) {
@@ -813,12 +816,15 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
 
         //// 1) set scan filters for MAC
         List<ScanFilter> filters = new ArrayList<>();
-        /*
-        ScanFilter scan_filter = new ScanFilter.Builder()
-                .setDeviceAddress( MAC_ADDR )
-                .build();
-        filters.add( scan_filter );
-        */
+
+        if (isMacAddressFilterEnabled) {
+            ScanFilter scan_filter = new ScanFilter.Builder()
+                    .setDeviceAddress( MAC_ADDR_BLE_COMBO )
+                    .build();
+            filters.add( scan_filter );
+        }
+
+
 
         //// 2) scan settings
         // set low power scan mode

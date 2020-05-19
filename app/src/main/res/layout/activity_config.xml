@@ -31,6 +31,7 @@
                 android:text="" />
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/tv_config_kalman_q_value"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
@@ -57,6 +58,7 @@
                 android:text="" />
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/tv_config_kalman_r_value"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
@@ -84,7 +86,28 @@
                 android:text="" />
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/tv_config_scan_time"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="value" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_config_scan_only_ble_combo"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:text="BLE COMBO ONLY"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tv_config_scan_only_ble_combo"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:text="value" />
