@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
 
 
 
+    private MovingAverageFilter mMovingAverageFilter;
     private KalmanFilter mKalmanRSSI;
     private int rawRSSI;
 
@@ -176,6 +177,7 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
 
         // KalmanFiltered RSSI
         mKalmanRSSI = new KalmanFilter(0.0f);
+        mMovingAverageFilter = new MovingAverageFilter();
 
         // RSSI log
         dataManager = new DataManager(MainActivity.this);
@@ -504,7 +506,11 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
         public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status){
             if (status == BluetoothGatt.GATT_SUCCESS) {
 
-                int filteredRSSI = (int) mKalmanRSSI.update(rssi);
+                // KalmanFilter
+                //int filteredRSSI = (int) mKalmanRSSI.update(rssi);
+
+                // MovingAverageFilter
+                int filteredRSSI = (int) mMovingAverageFilter.update(rssi);
 
                 // update ui
                 new Thread(new Runnable() {
@@ -735,7 +741,7 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
         //// 2) scan settings
         // set low power scan mode
         ScanSettings settings= new ScanSettings.Builder()
-                .setScanMode( ScanSettings.SCAN_MODE_LOW_POWER )
+                .setScanMode( ScanSettings.SCAN_MODE_LOW_LATENCY )
                 .build();
 
         // 3) scan callback
@@ -829,7 +835,7 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
         //// 2) scan settings
         // set low power scan mode
         ScanSettings settings= new ScanSettings.Builder()
-                .setScanMode( ScanSettings.SCAN_MODE_LOW_POWER )
+                .setScanMode( ScanSettings.SCAN_MODE_LOW_LATENCY )
                 .build();
 
         // 3) scan callback
@@ -1206,7 +1212,10 @@ public class MainActivity extends AppCompatActivity  implements ListViewBtnAdapt
             //int rssi = _result.getRssi();
 
             int rssi = _result.getRssi();
-            int filteredRSSI = (int) mKalmanRSSI.update(rssi);
+            // KalmanFilter
+            //int filteredRSSI = (int) mKalmanRSSI.update(rssi);
+            // MovingAverageFilter
+            int filteredRSSI = (int) mMovingAverageFilter.update(rssi);
 
             // add the device to the result list if not redundant.
             //CostumedBluetoothDevice _costumed_ble_device_data = new CostumedBluetoothDevice(device, rssi);
